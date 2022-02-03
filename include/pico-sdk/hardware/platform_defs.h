@@ -13,7 +13,8 @@
 #ifdef __ASSEMBLER__
 #define _u(x) x
 #else
-#define _u(x) x ## u
+#define __u(x,y) x ## y
+#define _u(x) __u(x,U)
 #endif
 #endif
 

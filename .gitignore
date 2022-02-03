@@ -1,4 +1,5 @@
 .DS_Store
+*.pio.h
 
 zig-cache/
 zig-out/
