@@ -10,19 +10,13 @@ pub fn build(b: *Builder) void {
         .abi = .eabi
     };
 
-    // libc stubs
-    const nosys = b.addObject("nosys", "src/nosys.zig");
-    nosys.setBuildMode(b.standardReleaseOptions());
-    nosys.setTarget(rp2040);
-    nosys.addIncludeDir("include/newlib");
-
     const firmware = b.addExecutable("firmware.elf", "src/main.zig");
     firmware.setBuildMode(b.standardReleaseOptions());
     firmware.setTarget(rp2040);
     firmware.addIncludeDir("include/newlib");
     firmware.addIncludeDir("include/pico-sdk");
-    firmware.addObject(nosys);
-    firmware.addObjectFile("lib/newlib-3.3.0/libc_nano.a");
+    firmware.addObjectFile("lib/newlib-3.3.0/libnosys.a"); // ar dv read.o write.o 
+    firmware.addObjectFile("lib/newlib-3.3.0/libc_nano.a"); // ar dv lib_a-exit.o
     firmware.addObjectFile("lib/newlib-3.3.0/libm.a");
     firmware.addObjectFile("lib/pico-sdk-1.3.0/pico_sdk.a");
     firmware.addAssemblyFile("lib/pico-sdk-1.3.0/bs2_default_padded_checksummed.S");
