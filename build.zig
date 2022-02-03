@@ -30,7 +30,7 @@ pub fn build(b: *Builder) void {
     firmware.strip = true;
     firmware.install();
     
-    const elf2uf2 = b.addExecutable("elf2uf2", "src/elf2uf2/main.cpp");
+    const elf2uf2 = b.addExecutable("elf2uf2", "lib/pico-sdk-1.3.0/elf2uf2/main.cpp");
     elf2uf2.linkLibCpp();
 
     const make_uf2 = elf2uf2.run();
