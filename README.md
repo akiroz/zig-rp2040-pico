@@ -10,3 +10,7 @@ $ zig build
 ```
 
 Drag `zig-out/bin/firmware.uf2` into the RP2 bootloader.
+
+### Notes
+
+The main firmware src currently can't be written in ziglang due to heavy use of macro pasting in Pico SDK.
