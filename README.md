@@ -6,7 +6,7 @@ Only requires `zig` installed.
 
 ```
 $ git clone <this repo>
-$ zig build
+$ zig build -Drelease-fast=true
 ```
 
 Drag `zig-out/bin/firmware.uf2` into the RP2 bootloader.
